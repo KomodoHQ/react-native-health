@@ -42,8 +42,6 @@
 
          NSDictionary *response = @{
                  @"value" : @(value),
-                 @"startDate" : [RCTAppleHealthKit buildISO8601StringFromDate:startDate],
-                 @"endDate" : [RCTAppleHealthKit buildISO8601StringFromDate:endDate],
          };
 
         callback(@[[NSNull null], response]);
@@ -199,8 +197,6 @@
 
         NSDictionary *response = @{
                 @"value" : @(distance),
-                @"startDate" : [RCTAppleHealthKit buildISO8601StringFromDate:startDate],
-                @"endDate" : [RCTAppleHealthKit buildISO8601StringFromDate:endDate],
         };
 
 
@@ -258,8 +254,6 @@
 
         NSDictionary *response = @{
                 @"value" : @(distance),
-                @"startDate" : [RCTAppleHealthKit buildISO8601StringFromDate:startDate],
-                @"endDate" : [RCTAppleHealthKit buildISO8601StringFromDate:endDate],
         };
 
         callback(@[[NSNull null], response]);
@@ -315,8 +309,6 @@
 
         NSDictionary *response = @{
                 @"value" : @(distance),
-                @"startDate" : [RCTAppleHealthKit buildISO8601StringFromDate:startDate],
-                @"endDate" : [RCTAppleHealthKit buildISO8601StringFromDate:endDate],
         };
 
         callback(@[[NSNull null], response]);
@@ -372,8 +364,6 @@
 
         NSDictionary *response = @{
                 @"value" : @(count),
-                @"startDate" : [RCTAppleHealthKit buildISO8601StringFromDate:startDate],
-                @"endDate" : [RCTAppleHealthKit buildISO8601StringFromDate:endDate],
         };
 
         callback(@[[NSNull null], response]);

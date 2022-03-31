@@ -525,8 +525,6 @@
 
          NSDictionary *response = @{
                  @"value" : @(value),
-                 @"startDate" : [RCTAppleHealthKit buildISO8601StringFromDate:startDate],
-                 @"endDate" : [RCTAppleHealthKit buildISO8601StringFromDate:endDate],
          };
 
         callback(@[[NSNull null], response]);

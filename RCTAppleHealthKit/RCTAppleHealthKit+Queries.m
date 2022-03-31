@@ -81,16 +81,11 @@
                     HKQuantity *quantity = sample.quantity;
                     double value = [quantity doubleValueForUnit:unit];
 
-                    NSString *startDateString = [RCTAppleHealthKit buildISO8601StringFromDate:sample.startDate];
-                    NSString *endDateString = [RCTAppleHealthKit buildISO8601StringFromDate:sample.endDate];
-
                     NSMutableDictionary *elem = [NSMutableDictionary dictionaryWithDictionary:@{
                             @"value" : @(value),
                             @"id" : [[sample UUID] UUIDString],
                             @"sourceName" : [[[sample sourceRevision] source] name],
                             @"sourceId" : [[[sample sourceRevision] source] bundleIdentifier],
-                            @"startDate" : startDateString,
-                            @"endDate" : endDateString,
                     }];
 
                     NSDictionary *metadata = [sample metadata];
@@ -267,8 +262,6 @@
 
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                 for (HKClinicalRecord *record in results) {
-                    NSString *startDateString = [RCTAppleHealthKit buildISO8601StringFromDate:record.startDate];
-                    NSString *endDateString = [RCTAppleHealthKit buildISO8601StringFromDate:record.endDate];
 
                     NSError *jsonE = nil;
                     NSArray *fhirData = [NSJSONSerialization JSONObjectWithData:record.FHIRResource.data options: NSJSONReadingMutableContainers error: &jsonE];
@@ -293,8 +286,6 @@
                         @"id" : [[record UUID] UUIDString],
                         @"sourceName" : [[[record sourceRevision] source] name],
                         @"sourceId" : [[[record sourceRevision] source] bundleIdentifier],
-                        @"startDate" : startDateString,
-                        @"endDate" : endDateString,
                         @"displayName" : record.displayName,
                         @"fhirData": fhirData,
                         @"fhirRelease": fhirRelease,
@@ -426,9 +417,6 @@
                 for (HKCategorySample *sample in results) {
                     NSInteger val = sample.value;
 
-                    NSString *startDateString = [RCTAppleHealthKit buildISO8601StringFromDate:sample.startDate];
-                    NSString *endDateString = [RCTAppleHealthKit buildISO8601StringFromDate:sample.endDate];
-
                     NSString *valueString;
 
                     switch (val) {
@@ -446,8 +434,6 @@
                     NSDictionary *elem = @{
                             @"id" : [[sample UUID] UUIDString],
                             @"value" : valueString,
-                            @"startDate" : startDateString,
-                            @"endDate" : endDateString,
                             @"sourceName" : [[[sample sourceRevision] source] name],
                             @"sourceId" : [[[sample sourceRevision] source] bundleIdentifier],
                     };
@@ -499,13 +485,9 @@
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 
                 for (HKCorrelation *sample in results) {
-                    NSString *startDateString = [RCTAppleHealthKit buildISO8601StringFromDate:sample.startDate];
-                    NSString *endDateString = [RCTAppleHealthKit buildISO8601StringFromDate:sample.endDate];
 
                     NSDictionary *elem = @{
                       @"correlation" : sample,
-                      @"startDate" : startDateString,
-                      @"endDate" : endDateString,
                     };
                     [data addObject:elem];
                 }
@@ -673,13 +655,8 @@
                                            NSDate *endDate = result.endDate;
                                            double value = [quantity doubleValueForUnit:unit];
 
-                                           NSString *startDateString = [RCTAppleHealthKit buildISO8601StringFromDate:startDate];
-                                           NSString *endDateString = [RCTAppleHealthKit buildISO8601StringFromDate:endDate];
-
                                            NSDictionary *elem = @{
                                                    @"value" : @(value),
-                                                   @"startDate" : startDateString,
-                                                   @"endDate" : endDateString,
                                            };
                                            [data addObject:elem];
                                        }
@@ -757,13 +734,9 @@
                                            NSDate *endDate = result.endDate;
                                            double value = [quantity doubleValueForUnit:unit];
 
-                                           NSString *startDateString = [RCTAppleHealthKit buildISO8601StringFromDate:startDate];
-                                           NSString *endDateString = [RCTAppleHealthKit buildISO8601StringFromDate:endDate];
 
                                            NSDictionary *elem = @{
                                                    @"value" : @(value),
-                                                   @"startDate" : startDateString,
-                                                   @"endDate" : endDateString,
                                            };
                                            [data addObject:elem];
                                        }
@@ -818,8 +791,6 @@
                             @"activityName" : activityName,
                             @"calories" : @(energy),
                             @"distance" : @(distance),
-                            @"startDate" : [RCTAppleHealthKit buildISO8601StringFromDate:sample.startDate],
-                            @"endDate" : [RCTAppleHealthKit buildISO8601StringFromDate:sample.endDate]
                         };
                         [data addObject:elem];
                     }

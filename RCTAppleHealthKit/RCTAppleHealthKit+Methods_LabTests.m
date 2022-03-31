@@ -30,9 +30,7 @@
             // Determine the weight in the required unit.
             double usersBloodAlcoholContent = [mostRecentQuantity doubleValueForUnit:unit];
             NSDictionary *response = @{
-                    @"value" : @(usersBloodAlcoholContent),
-                    @"startDate" : [RCTAppleHealthKit buildISO8601StringFromDate:startDate],
-                    @"endDate" : [RCTAppleHealthKit buildISO8601StringFromDate:endDate],
+                    @"value" : @(usersBloodAlcoholContent)
             };
 
             callback(@[[NSNull null], response]);

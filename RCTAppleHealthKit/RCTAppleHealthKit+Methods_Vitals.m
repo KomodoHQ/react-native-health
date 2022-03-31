@@ -195,16 +195,11 @@
                 }
             };
             
-            for (HKHeartbeatSeriesSample *sample in results) {
-                NSString *startDateString = [RCTAppleHealthKit buildISO8601StringFromDate:sample.startDate];
-                NSString *endDateString = [RCTAppleHealthKit buildISO8601StringFromDate:sample.endDate];
-                
+            for (HKHeartbeatSeriesSample *sample in results) {                
                 NSDictionary *elem = @{
                      @"id" : [[sample UUID] UUIDString],
                      @"sourceName" : [[[sample sourceRevision] source] name],
                      @"sourceId" : [[[sample sourceRevision] source] bundleIdentifier],
-                     @"startDate" : startDateString,
-                     @"endDate" : endDateString,
                      @"heartbeatSeries": @[]
                  };
                 NSMutableDictionary *mutableElem = [elem mutableCopy];
@@ -356,8 +351,6 @@
                 NSDictionary *elem = @{
                                        @"bloodPressureSystolicValue" : @([bloodPressureSystolicValue.quantity doubleValueForUnit:unit]),
                                        @"bloodPressureDiastolicValue" : @([bloodPressureDiastolicValue.quantity doubleValueForUnit:unit]),
-                                       @"startDate" : [sample valueForKey:@"startDate"],
-                                       @"endDate" : [sample valueForKey:@"endDate"],
                                       };
 
                 [data addObject:elem];
@@ -519,8 +512,6 @@
              };
 
              for (HKElectrocardiogram *sample in results) {
-                 NSString *startDateString = [RCTAppleHealthKit buildISO8601StringFromDate:sample.startDate];
-                 NSString *endDateString = [RCTAppleHealthKit buildISO8601StringFromDate:sample.endDate];
                  
                  NSString *classification;
                  switch(sample.classification) {
@@ -558,8 +549,6 @@
                       @"id" : [[sample UUID] UUIDString],
                       @"sourceName" : [[[sample sourceRevision] source] name],
                       @"sourceId" : [[[sample sourceRevision] source] bundleIdentifier],
-                      @"startDate" : startDateString,
-                      @"endDate" : endDateString,
                       @"classification": classification,
                       @"averageHeartRate": @(averageHeartRate),
                       @"samplingFrequency": @([sample.samplingFrequency doubleValueForUnit:HKUnit.hertzUnit]),

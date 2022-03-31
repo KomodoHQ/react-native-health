@@ -30,8 +30,6 @@
             double usersWeight = [mostRecentQuantity doubleValueForUnit:unit];
             NSDictionary *response = @{
                     @"value" : @(usersWeight),
-                    @"startDate" : [RCTAppleHealthKit buildISO8601StringFromDate:startDate],
-                    @"endDate" : [RCTAppleHealthKit buildISO8601StringFromDate:endDate],
             };
 
             callback(@[[NSNull null], response]);
@@ -109,8 +107,6 @@
 
             NSDictionary *response = @{
                     @"value" : @(bmi),
-                    @"startDate" : [RCTAppleHealthKit buildISO8601StringFromDate:startDate],
-                    @"endDate" : [RCTAppleHealthKit buildISO8601StringFromDate:endDate],
             };
 
             callback(@[[NSNull null], response]);
@@ -188,8 +184,6 @@
 
             NSDictionary *response = @{
                     @"value" : @(height),
-                    @"startDate" : [RCTAppleHealthKit buildISO8601StringFromDate:startDate],
-                    @"endDate" : [RCTAppleHealthKit buildISO8601StringFromDate:endDate],
             };
 
             callback(@[[NSNull null], response]);
@@ -267,8 +261,6 @@
 
             NSDictionary *response = @{
                     @"value" : @(waistCircumference),
-                    @"startDate" : [RCTAppleHealthKit buildISO8601StringFromDate:startDate],
-                    @"endDate" : [RCTAppleHealthKit buildISO8601StringFromDate:endDate],
             };
 
             callback(@[[NSNull null], response]);
@@ -348,8 +340,6 @@
 
             NSDictionary *response = @{
                     @"value" : @(percentage),
-                    @"startDate" : [RCTAppleHealthKit buildISO8601StringFromDate:startDate],
-                    @"endDate" : [RCTAppleHealthKit buildISO8601StringFromDate:endDate],
             };
 
             callback(@[[NSNull null], response]);
@@ -451,8 +441,6 @@
 
             NSDictionary *response = @{
                     @"value" : @(leanBodyMass),
-                    @"startDate" : [RCTAppleHealthKit buildISO8601StringFromDate:startDate],
-                    @"endDate" : [RCTAppleHealthKit buildISO8601StringFromDate:endDate],
             };
 
             callback(@[[NSNull null], response]);
